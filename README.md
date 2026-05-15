@@ -35,51 +35,6 @@
 - SQL Server 2019+
 - IntelliJ IDEA 2024+
 
-### 安装步骤
-
-#### 1. 创建数据库表
-
-```sql
-USE StudentDB;
-GO
-
-CREATE TABLE student (
-  id INT IDENTITY(1,1) PRIMARY KEY,
-  student_id NVARCHAR(50) NOT NULL,
-  name NVARCHAR(50) NOT NULL,
-  class_name NVARCHAR(50) NOT NULL,
-  score FLOAT NOT NULL
-);
-
--- 插入示例数据
-INSERT INTO student (student_id, name, class_name, score) 
-VALUES ('1', '张三', '1班', 85.5),
-       ('2', '李四', '2班', 90.0),
-       ('3', '王五', '1班', 78.5);
-```
-
-#### 2. 配置数据库连接
-
-编辑 `src/main/resources/config.properties`：
-
-```properties
-db.driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
-db.url=jdbc:sqlserver://localhost:1433;databaseName=StudentDB;encrypt=true;trustServerCertificate=true
-db.user=sa
-db.password=your_password
-```
-
-#### 3. 部署到 Tomcat
-
-- 在 IDEA 配置 Tomcat 运行配置
-- Run → Run Tomcat
-
-#### 4. 访问应用
-
-打开浏览器访问：`http://localhost:8080/student?action=list`
-
----
-
 ## 📁 项目结构
 
 ```
@@ -209,59 +164,6 @@ Response → JSP (View)
 
 ---
 
-## 🧪 测试用例
-
-### 1. 查询列表
-- URL: `http://localhost:8080/student?action=list`
-- 预期: 显示所有学生信息表格
-
-### 2. 新增学生
-- 点击"新增学生"按钮
-- 填入数据: 学号=4, 姓名=赵六, 班级=3班, 成绩=88.0
-- 点击"保存"
-- 预期: 列表出现新记录
-
-### 3. 编辑学生
-- 点击某个学生的"编辑"链接
-- 修改成绩为 92.5
-- 点击"保存修改"
-- 预期: 列表更新为新成绩
-
-### 4. 删除学生
-- 点击某个学生的"删除"链接
-- 在确认对话框中点击"确定"
-- 预期: 列表移除该学生
-
----
-
-## 🐛 常见问题
-
-### Q1: 连接数据库失败 "No suitable driver found"
-**A**: 确保 `mssql-jdbc-13.4.0.jre11.jar` 在 `WEB-INF/lib/` 目录中，重启 Tomcat。
-
-### Q2: 查��不到表 "对象名 'student' 无效"
-**A**: 确认数据库中存在 `student` 表，数据库名称与 `config.properties` 中 `databaseName` 一致。
-
-### Q3: 新增/编辑数据没有保存
-**A**: 检查 Tomcat 控制台是否有 SQLException，确认所有字段值都已传入。
-
-### Q4: JSP 页面显示乱码
-**A**: 确保：
-- JSP 文件设置为 UTF-8 编码
-- `response.setCharacterEncoding("UTF-8")` 已在 Servlet 中调用
-- HTML `<meta charset="UTF-8">` 已添加
-
----
-
-## 📚 学习资源
-
-- [Jakarta EE (Servlet + JSP)](https://jakarta.ee/specifications/servlet/)
-- [JDBC 编程](https://docs.oracle.com/javase/tutorial/jdbc/)
-- [SQL Server JDBC 驱动](https://learn.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-- [Apache Tomcat 文档](https://tomcat.apache.org/tomcat-11.0-doc/)
-
----
-
 ## 📄 版本历史
 
 ### v2.0 (2026-05-15) - Web 版本
@@ -276,14 +178,6 @@ Response → JSP (View)
 - 基础的学生信息管理
 - 命令行菜单界面
 - JDBC 数据库连接
-
----
-
-## 👤 作者
-
-yingning514
-
----
 
 ## 📜 License
 
