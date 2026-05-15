@@ -12,21 +12,6 @@
 
 ### 版本对比
 
-| 特性 | v1.0 (命令行) | v2.0 (Web) |
-|------|-------------|-----------|
-| 界面 | 控制台菜单 | Web 页面 (JSP) |
-| 架构 | 单层 (DAO + Entity) | MVC 三层架构 |
-| 数据库 | SQL Server | SQL Server |
-| 部署 | Java 应用 | Tomcat 服务器 |
-| 新增 | ✓ | ✓ |
-| 编辑 | ✓ | ✓ |
-| 删除 | ✓ | ✓ |
-| 查询 | ✓ | ✓ |
-| Web 界面 | ✗ | ✓ |
-
----
-
-## 🚀 快速开始 (v2.0 Web 版)
 
 ### 环境要求
 
@@ -72,29 +57,6 @@ StudentManagementSystem/
 
 ---
 
-## ✨ 功能特性 (v2.0)
-
-### 学生列表页面 (list.jsp)
-- 显示所有学生信息
-- 支持"编辑"和"删除"操作
-- "新增学生"按钮
-
-### 新增学生页面 (add.jsp)
-- 表单输入：学号、姓名、班级、成绩
-- 客户端参数验证
-- 服务端校验（成绩范围 0-100）
-
-### 编辑学生页面 (edit.jsp)
-- 回显学生当前信息
-- 修改任意字段
-- 提交更新
-
-### 删��功能
-- 确认删除对话框
-- 删除后自动重定向到列表
-
----
-
 ## 🏗️ 架构设计 (v2.0)
 
 ### MVC 三层架构
@@ -121,15 +83,6 @@ Response → JSP (View)
   └── edit.jsp
 ```
 
-### 数据流
-
-1. **查询列表**：`doGet(action=list)` → `selectAll()` → 渲染 `list.jsp`
-2. **新增学生**：`GET /student?action=add` → 显示 `add.jsp` → `POST` → `insert()` → 重定向列表
-3. **编辑学生**：`GET /student?action=edit&id=1` → `selectById()` → 显示 `edit.jsp` → `POST` → `update()` → 重定向列表
-4. **删除学生**：`GET /student?action=delete&id=1` → `delete()` → 重定向列表
-
----
-
 ## 🔧 技术栈
 
 ### 后端
@@ -147,20 +100,6 @@ Response → JSP (View)
 ### 工具
 - IntelliJ IDEA 2025.1
 - Git
-
----
-
-## 📝 数据库设计
-
-### student 表
-
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| id | INT | 主键，自增 |
-| student_id | NVARCHAR(50) | 学号 |
-| name | NVARCHAR(50) | 学生姓名 |
-| class_name | NVARCHAR(50) | 班级 |
-| score | FLOAT | 成绩 |
 
 ---
 
