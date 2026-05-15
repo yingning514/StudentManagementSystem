@@ -21,9 +21,23 @@ public class DBUtil {
         try {
             Properties props = new Properties();
             // 从类路径加载配置文件
-            InputStream input = DBUtil.class.getClassLoader()
-                    .getResourceAsStream("config.properties");
+            InputStream input = DBUtil.class.getClassLoader().getResourceAsStream("config.properties");
+            if (input == null) {
+                throw new RuntimeException("找不到 config.properties（不在 classpath）");
+            }
             props.load(input);
+
+            //读取配置参数
+            // 读取配置参数
+            driver = props.getProperty("db.driver");
+            url = props.getProperty("db.url");
+            user = props.getProperty("db.user");
+            password = props.getProperty("db.password");
+
+            // 判空（防止配置缺项）
+            if (driver == null || url == null || user == null || password == null) {
+                throw new RuntimeException("config.properties 缺少配置项，请检查 db.driver/db.url/db.user/db.password");
+            }
 
             // 读取配置参数
             driver = props.getProperty("db.driver");

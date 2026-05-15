@@ -186,7 +186,7 @@ public class Main {
             return;
         }
 
-        if (studentDao.updateScore(student.getId(), newScore)) {
+        if (studentDao.update(student.getId(), newScore)) {
             System.out.println("✓ 修改成功");
         } else {
             System.out.println("✗ 修改失败");

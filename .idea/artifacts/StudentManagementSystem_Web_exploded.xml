@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="StudentManagementSystem:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/StudentManagementSystem_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="StudentManagementSystem/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="StudentManagementSystem" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mssql-jdbc-13.4.0.jre11" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
